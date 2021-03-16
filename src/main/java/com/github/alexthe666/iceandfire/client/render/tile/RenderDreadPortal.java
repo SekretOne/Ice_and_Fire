@@ -30,7 +30,7 @@ public class RenderDreadPortal extends TileEntitySpecialRenderer<TileEntityDread
         GlStateManager.getFloat(2982, MODELVIEW);
         GlStateManager.getFloat(2983, PROJECTION);
         double d0 = x * x + y * y + z * z;
-        int i = te == null ? 14 : this.getPasses(d0);
+        int i = this.getPasses(d0);
         float f = this.getOffset();
         boolean flag = false;
 
@@ -73,12 +73,9 @@ public class RenderDreadPortal extends TileEntitySpecialRenderer<TileEntityDread
             GlStateManager.scale(0.5F, 0.5F, 1.0F);
             float f2 = (float) (j + 1);
             float time = (Minecraft.getMinecraft().player.ticksExisted - 1 + (1 * partialTicks)) % 800.0F / 800.0F;
-            if (te == null) {
-                time = (Minecraft.getMinecraft().frameTimer.getIndex() - 1 + (1 * partialTicks)) % 3200F / 3200F;
-            }
-            GlStateManager.translate((j == 0 ? 7 : 17.0F) / f2 * time * RANDOM.nextGaussian(), j == 0 ? 0 : (2.0F + f2 / 1.5F) * -time, 0.0F);
+	        GlStateManager.translate((j == 0 ? 7 : 17.0F) / f2 * time * RANDOM.nextGaussian(), j == 0 ? 0 : (2.0F + f2 / 1.5F) * -time, 0.0F);
             GlStateManager.rotate(180, 0.0F, 0.0F, 1.0F);
-            float scal = j == 0 ? 4 : te == null ? 2 : 0.5F ;
+            float scal = j == 0 ? 4 : 0.5F;
             GlStateManager.scale(scal, j == 0 ? 1 : scal, 1.0F);
             GlStateManager.multMatrix(PROJECTION);
             GlStateManager.multMatrix(MODELVIEW);
@@ -89,42 +86,42 @@ public class RenderDreadPortal extends TileEntitySpecialRenderer<TileEntityDread
             float f4 = (RANDOM.nextFloat() * 0.05F + 0.9F) * f1;
             float f5 = 0.98F;
             float alpha2 = 1.0F;
-            if (te == null || te.shouldRenderFace(EnumFacing.SOUTH)) {
+            if (te.shouldRenderFace(EnumFacing.SOUTH)) {
                 bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y + 1.0D, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y + 1.0D, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
             }
 
-            if (te == null || te.shouldRenderFace(EnumFacing.NORTH)) {
+            if (te.shouldRenderFace(EnumFacing.NORTH)) {
                 bufferbuilder.pos(x, y + 1.0D, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y + 1.0D, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y, z).color(f3, f4, f5, alpha2).endVertex();
             }
 
-            if (te == null || te.shouldRenderFace(EnumFacing.EAST)) {
+            if (te.shouldRenderFace(EnumFacing.EAST)) {
                 bufferbuilder.pos(x + 1.0D, y + 1.0D, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y + 1.0D, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, alpha2).endVertex();
             }
 
-            if (te == null || te.shouldRenderFace(EnumFacing.WEST)) {
+            if (te.shouldRenderFace(EnumFacing.WEST)) {
                 bufferbuilder.pos(x, y, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y + 1.0D, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y + 1.0D, z).color(f3, f4, f5, alpha2).endVertex();
             }
 
-            if (te == null || te.shouldRenderFace(EnumFacing.DOWN)) {
+            if (te.shouldRenderFace(EnumFacing.DOWN)) {
                 bufferbuilder.pos(x, y, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
             }
 
-            if (te == null || te.shouldRenderFace(EnumFacing.UP)) {
+            if (te.shouldRenderFace(EnumFacing.UP)) {
                 bufferbuilder.pos(x, y + (double) f, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y + (double) f, z + 1.0D).color(f3, f4, f5, alpha2).endVertex();
                 bufferbuilder.pos(x + 1.0D, y + (double) f, z).color(f3, f4, f5, alpha2).endVertex();
